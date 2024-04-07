@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "noImplicitAny": true,
+        "noEmitOnError": true,
+        "strictNullChecks": true,
+        "target": "es5",
+        "module": "esnext",
+        "declaration": true,
+        "outDir": "./lib",
+        "strict": true,
+        "sourceMap": true,
+        "esModuleInterop": true
+    },
+    "include": ["src", "test"],
+    "exclude": ["node_modules", "**/__tests__/*"]
+  }
