@@ -1,4 +1,4 @@
-/// <reference path="vectors.d.ts" />
+
 
 export function clamp(op1: number, min: number, max: number): number{
     return Math.min(Math.max(op1, min), max);

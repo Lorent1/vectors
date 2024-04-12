@@ -1,14 +1,16 @@
 {
   "name": "vectors_litemath",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "description": "simple library with vec2, vec3 and vec4 used for the graphic",
   "main": "src/index.ts",
+  "type": "module",
   "scripts": {
     "test": "jest",
-    "build": "tsc",
+    "build": "webpack",
     "dev": "tsc --watch",
     "docsify": "docsify serve ./docs"
   },
+  "module": "./build/esm/index.js",
   "author": "",
   "license": "MIT",
   "devDependencies": {
@@ -17,7 +19,10 @@
     "docsify-cli": "^4.4.4",
     "jest": "^29.7.0",
     "ts-jest": "^29.1.2",
+    "ts-loader": "^9.5.1",
     "typedoc": "^0.25.12",
-    "typescript": "^5.4.4"
+    "typescript": "^5.4.4",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
   }
 }
