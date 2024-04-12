@@ -1,5 +1,5 @@
 import { randomInt } from "crypto";
-import { vec3, abs, clamp, dot, greater, length, lerp, less, lessOrEqual, max, min, mix, mul, normalize, notEqual, sqrt, equal, add, sub, div, greaterOrEqual, clampVec} from "../src/vectors";
+import { vec3, clamp } from "../src/vectors";
 
 
 describe("vec3", () =>{
@@ -14,93 +14,94 @@ describe("vec3", () =>{
     let test_vec1 = new vec3(a, b, c);
     let test_vec2 = new vec3(d, e, f);
   
-    it("add", () => {
-      expect(add(test_vec1, test_vec2)).toStrictEqual(new vec3(a + d, b + e, c + f));
-      expect(add(test_vec1, d)).toStrictEqual(new vec3(a + d, b + d, c + d));
-      expect(add(a, test_vec2)).toStrictEqual(new vec3(a + d, a + e, a + f));
+    it("vec3", () => {
+      let v: vec3 = vec3.add(new vec3(a, b, c), new vec3(d, e, f));
+      expect(vec3.add(test_vec1, test_vec2)).toStrictEqual(new vec3(a + d, b + e, c + f));
+      expect(vec3.add(test_vec1, d)).toStrictEqual(new vec3(a + d, b + d, c + d));
+      expect(vec3.add(a, test_vec2)).toStrictEqual(new vec3(a + d, a + e, a + f));
     });
   
-    it("sub", () => {
-      expect(sub(test_vec1, test_vec2)).toStrictEqual(new vec3(a - d, b - e, c - f));
-      expect(sub(test_vec1, d)).toStrictEqual(new vec3(a - d, b - d, c - d));
-      expect(sub(a, test_vec2)).toStrictEqual(new vec3(a - d, a - e, a - f));
+    it("vec3", () => {
+      expect(vec3.sub(test_vec1, test_vec2)).toStrictEqual(new vec3(a - d, b - e, c - f));
+      expect(vec3.sub(test_vec1, d)).toStrictEqual(new vec3(a - d, b - d, c - d));
+      expect(vec3.sub(a, test_vec2)).toStrictEqual(new vec3(a - d, a - e, a - f));
     });
   
-    it("mul", () => {
-      expect(mul(test_vec1, test_vec2)).toStrictEqual(new vec3(a * d, b * e, c * f));
-      expect(mul(test_vec1, d)).toStrictEqual(new vec3(a * d, b * d, c * d));
-      expect(mul(a, test_vec2)).toStrictEqual(new vec3(a * d, a * e, a * f));
+    it("vec3", () => {
+      expect(vec3.mul(test_vec1, test_vec2)).toStrictEqual(new vec3(a * d, b * e, c * f));
+      expect(vec3.mul(test_vec1, d)).toStrictEqual(new vec3(a * d, b * d, c * d));
+      expect(vec3.mul(a, test_vec2)).toStrictEqual(new vec3(a * d, a * e, a * f));
     });
   
-    it("div", () => {
-      expect(div(test_vec1, test_vec2)).toStrictEqual(new vec3(a / d, b / e, c / f));
-      expect(div(test_vec1, d)).toStrictEqual(new vec3(a / d, b / d, c / d));
-      expect(div(a, test_vec2)).toStrictEqual(new vec3(a / d, a / e, a / f));
+    it("vec3", () => {
+      expect(vec3.div(test_vec1, test_vec2)).toStrictEqual(new vec3(a / d, b / e, c / f));
+      expect(vec3.div(test_vec1, d)).toStrictEqual(new vec3(a / d, b / d, c / d));
+      expect(vec3.div(a, test_vec2)).toStrictEqual(new vec3(a / d, a / e, a / f));
     });
   
     it("greater", () => {
-      expect(greater(test_vec1, test_vec2)).toStrictEqual(new vec3(+(a > d), +(b > e), +(c > f)));
+      expect(vec3.greater(test_vec1, test_vec2)).toStrictEqual(new vec3(+(a > d), +(b > e), +(c > f)));
     });
   
     it("less", () => {
-      expect(less(test_vec1, test_vec2)).toStrictEqual(new vec3(+(a < d), +(b < e), +(c < f)));
+      expect(vec3.less(test_vec1, test_vec2)).toStrictEqual(new vec3(+(a < d), +(b < e), +(c < f)));
     });
   
     it("greaterOrEqual", () => {
-      expect(greaterOrEqual(test_vec1, test_vec2)).toStrictEqual(new vec3(+(a >= d), +(b >= e), +(c >= f)));
+      expect(vec3.greaterOrEqual(test_vec1, test_vec2)).toStrictEqual(new vec3(+(a >= d), +(b >= e), +(c >= f)));
     });
   
     it("lessOrEqual", () => {
-      expect(lessOrEqual(test_vec1, test_vec2)).toStrictEqual(new vec3(+(a <= d), +(b <= e), +(c <= f)));
+      expect(vec3.lessOrEqual(test_vec1, test_vec2)).toStrictEqual(new vec3(+(a <= d), +(b <= e), +(c <= f)));
     });
   
     it("equal", () => {
-      expect(equal(test_vec1, test_vec2)).toStrictEqual(new vec3(+(a == d), +(b == e), +(c == f)));
+      expect(vec3.equal(test_vec1, test_vec2)).toStrictEqual(new vec3(+(a == d), +(b == e), +(c == f)));
     });
   
     it("notEqual", () => {
-      expect(notEqual(test_vec1, test_vec2)).toStrictEqual(new vec3(+(a != d), +(b != e), +(c != f)));
+      expect(vec3.notEqual(test_vec1, test_vec2)).toStrictEqual(new vec3(+(a != d), +(b != e), +(c != f)));
     });
   
     it("min", () => {
-      expect(min(test_vec1, test_vec2)).toStrictEqual(new vec3(Math.min(a, d), Math.min(b, e), Math.min(c, f)));
+      expect(vec3.min(test_vec1, test_vec2)).toStrictEqual(new vec3(Math.min(a, d), Math.min(b, e), Math.min(c, f)));
     });
   
     it("max", () => {
-      expect(max(test_vec1, test_vec2)).toStrictEqual(new vec3(Math.max(a, d), Math.max(b, e), Math.max(c, f)));
+      expect(vec3.max(test_vec1, test_vec2)).toStrictEqual(new vec3(Math.max(a, d), Math.max(b, e), Math.max(c, f)));
     });
   
     it("clampVec", () => {
-      expect(clampVec(test_vec1, test_vec2, new vec3(a + d, b + e, c + f))).toStrictEqual(new vec3(clamp(a, d, a + d), clamp(b, e, b + e),  clamp(c, f, c + f)));
-      expect(clampVec(test_vec1, e, f)).toStrictEqual(new vec3(clamp(a, e, f), clamp(b, e, f), clamp(c, e, f)));
+      expect(vec3.clamp(test_vec1, test_vec2, new vec3(a + d, b + e, c + f))).toStrictEqual(new vec3(clamp(a, d, a + d), clamp(b, e, b + e),  clamp(c, f, c + f)));
+      expect(vec3.clamp(test_vec1, e, f)).toStrictEqual(new vec3(clamp(a, e, f), clamp(b, e, f), clamp(c, e, f)));
     });
   
     it("abs", () => {
-      expect(abs(test_vec1)).toStrictEqual(new vec3(Math.abs(a), Math.abs(b), Math.abs(c)));
+      expect(vec3.abs(test_vec1)).toStrictEqual(new vec3(Math.abs(a), Math.abs(b), Math.abs(c)));
     });
   
     it("lerp", () => {
-      expect(lerp(test_vec1, test_vec2, t)).toStrictEqual(new vec3(a + t * (d - a), b + t * (e - b), c + t * (f - c)));
+      expect(vec3.lerp(test_vec1, test_vec2, t)).toStrictEqual(new vec3(a + t * (d - a), b + t * (e - b), c + t * (f - c)));
     });
   
     it("mix", () => {
-      expect(mix(test_vec1, test_vec2, t)).toStrictEqual(new vec3(a + t * (d - a), b + t * (e - b), c + t * (f - c)));
+      expect(vec3.mix(test_vec1, test_vec2, t)).toStrictEqual(new vec3(a + t * (d - a), b + t * (e - b), c + t * (f - c)));
     });
   
     it("sqrt", () => {
-      expect(sqrt(test_vec1)).toStrictEqual(new vec3(Math.sqrt(a), Math.sqrt(b), Math.sqrt(c)));
+      expect(vec3.sqrt(test_vec1)).toStrictEqual(new vec3(Math.sqrt(a), Math.sqrt(b), Math.sqrt(c)));
     });
   
     it("dot", () => {
-      expect(dot(test_vec1, test_vec2)).toStrictEqual(a * d + b * e + c * f);
+      expect(vec3.dot(test_vec1, test_vec2)).toStrictEqual(a * d + b * e + c * f);
     });
   
     it("length", () => {
-      expect(length(test_vec1)).toStrictEqual(Math.sqrt(dot(test_vec1, test_vec1)));
+      expect(vec3.lengthVec(test_vec1)).toStrictEqual(Math.sqrt(vec3.dot(test_vec1, test_vec1)));
     });
   
     it("normalize", () => {
-      let lenInv = 1.0/length(test_vec1);
-      expect(normalize(test_vec1)).toStrictEqual(div(test_vec1, lenInv));
+      let lenInv = 1.0/vec3.lengthVec(test_vec1);
+      expect(vec3.normalize(test_vec1)).toStrictEqual(vec3.mul(test_vec1, lenInv));
     });
   })

@@ -1,6 +1,6 @@
 {
-  "name": "vectors",
-  "version": "1.0.0",
+  "name": "vectors_litemath",
+  "version": "2.0.0",
   "description": "simple library with vec2, vec3 and vec4 used for the graphic",
   "main": "src/index.ts",
   "scripts": {
@@ -10,7 +10,7 @@
     "docsify": "docsify serve ./docs"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/jest": "^29.5.12",
     "@types/node": "^20.12.5",
